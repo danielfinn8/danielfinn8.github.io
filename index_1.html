@@ -1,0 +1,654 @@
+<title>Daniel Finn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+  :root {
+    --paper:      #F7F6F3;
+    --ink:        #14151A;
+    --ink-soft:   #4C505A;
+    --ink-faint:  #80848E;
+    --rule:       #E2E0DA;
+    --rule-soft:  #EDEBE5;
+    --accent:     #32407C;
+    --accent-dim: #6E78AD;
+    --accent-wash:#ECEEF6;
+
+    --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #101219;
+      --ink:        #E9E8E3;
+      --ink-soft:   #A6A8B2;
+      --ink-faint:  #767985;
+      --rule:       #262832;
+      --rule-soft:  #1D1F28;
+      --accent:     #A2ACEC;
+      --accent-dim: #6C76B0;
+      --accent-wash:#1A1D2B;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #101219;
+    --ink:        #E9E8E3;
+    --ink-soft:   #A6A8B2;
+    --ink-faint:  #767985;
+    --rule:       #262832;
+    --rule-soft:  #1D1F28;
+    --accent:     #A2ACEC;
+    --accent-dim: #6C76B0;
+    --accent-wash:#1A1D2B;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 24px;
+  }
+
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-block: 0 5rem;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { padding-block: 5rem 0; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3rem, 8.5vw, 4.3rem);
+    line-height: 0.98;
+    letter-spacing: -0.022em;
+    margin: 0 0 1.3rem;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-family: var(--serif);
+    font-size: clamp(1.18rem, 2.3vw, 1.36rem);
+    line-height: 1.5;
+    font-weight: 300;
+    margin: 0 0 2rem;
+    max-width: 33rem;
+    text-wrap: pretty;
+  }
+
+  .places {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.8rem;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .places .sep { color: var(--accent-dim); }
+
+  /* ---------- tabs ---------- */
+
+  .tabbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-top: 2.6rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabbar::-webkit-scrollbar { display: none; }
+
+  .tablist {
+    display: flex;
+    gap: 1.9rem;
+    min-width: max-content;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tablist button {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 0.95rem 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 130ms ease, border-color 130ms ease;
+  }
+
+  .tablist button:hover { color: var(--ink-soft); }
+
+  .tablist button[aria-selected="true"] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .panel { padding-top: 3.2rem; }
+
+  /* ---------- type ---------- */
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .kicker::before {
+    content: "";
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent-dim);
+    flex: none;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 4vw, 2.25rem);
+    line-height: 1.14;
+    letter-spacing: -0.016em;
+    margin: 0 0 1.4rem;
+    max-width: 30rem;
+    text-wrap: balance;
+  }
+
+  .block + .block { margin-top: 4rem; }
+
+  p { margin: 0 0 1.1rem; max-width: 34rem; }
+  p.last { margin-bottom: 0; }
+
+  strong { font-weight: 500; }
+
+  a.link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+  }
+
+  a.link:hover { border-bottom-width: 2px; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .pull {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.28rem, 2.9vw, 1.55rem);
+    line-height: 1.36;
+    margin: 2.2rem 0;
+    padding-left: 1.3rem;
+    border-left: 2px solid var(--accent);
+    max-width: 29rem;
+    text-wrap: pretty;
+  }
+
+  /* ---------- entries ---------- */
+
+  .entry {
+    padding-block: 1.8rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .entry:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.2rem 1.5rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .entry-org {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 1.06rem;
+    letter-spacing: -0.005em;
+  }
+
+  .entry-when {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .entry-role {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .entry p { font-size: 16px; color: var(--ink-soft); margin-bottom: 0.85rem; }
+  .entry p:last-child { margin-bottom: 0; }
+  .entry p strong { color: var(--ink); }
+
+  /* ---------- pitches ---------- */
+
+  .pitch {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0 1.3rem;
+    padding-block: 1.15rem;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .pitch:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .pitch-id {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pitch-meta {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.2rem;
+    line-height: 1.45;
+  }
+
+  .pitch-what { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); }
+  .pitch-what strong { color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .pitch { grid-template-columns: 1fr; gap: 0.4rem; }
+    .pitch-meta { display: inline; margin-left: 0.6rem; }
+  }
+
+  /* ---------- chips ---------- */
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .chips li {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    background: var(--rule-soft);
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* ---------- photo slots ---------- */
+
+  figure { margin: 2.4rem 0 0; }
+
+  figure img { display: block; width: 100%; max-width: 100%; height: auto; }
+
+  figure.portrait { max-width: 21rem; }
+  figure.portrait img { background: var(--rule-soft); }
+
+  figcaption {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--ink-faint);
+    margin-top: 0.65rem;
+    max-width: 26rem;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.7rem;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .sig {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">NYU Stern &middot; Class of 2029</p>
+    <h1>Daniel Finn</h1>
+    <p class="standfirst">I study finance and AI, computing and data science at NYU Stern. I spent this past summer as a private equity analyst running diligence on a live acquisition. I grew up between the Chicago suburbs and Bengaluru, India.</p>
+  </header>
+
+  <div class="tabbar">
+    <div class="tablist" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-background" aria-controls="panel-background" aria-selected="true">Background</button>
+      <button role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="false">Experience</button>
+      <button role="tab" id="tab-stern" aria-controls="panel-stern" aria-selected="false">At Stern</button>
+      <button role="tab" id="tab-investing" aria-controls="panel-investing" aria-selected="false">Investing</button>
+      <button role="tab" id="tab-beyond" aria-controls="panel-beyond" aria-selected="false">Hobbies</button>
+    </div>
+  </div>
+
+  <!-- ============ BACKGROUND ============ -->
+  <div class="panel" role="tabpanel" id="panel-background" aria-labelledby="tab-background" tabindex="0">
+
+    <div class="block">
+      <p class="kicker">Where I start</p>
+      <h2>What I got from my grandfather</h2>
+      <p>My mother's father, my grandpa, came to the United States from Guanajuato, Mexico when he was eighteen. Years later, he was the one who took care of me while both my parents were at work. I spent nearly every day with him, with his music always on.</p>
+      <p class="last">The pride I have in being Mexican-American comes from him. He is the person I measure myself against, and most of what I believe about work I learned from watching him.</p>
+
+      <figure class="portrait">
+        <img src="headshot.jpg" alt="Daniel Finn in a navy suit on the steps of a brick building." width="1100" height="1650" loading="lazy">
+      </figure>
+    </div>
+
+    <div class="block">
+      <p class="kicker">Five years</p>
+      <h2>Growing up in Bengaluru</h2>
+      <p>I lived in Bengaluru for five years. It's one of India's business and technology capitals, and that is something you notice living there: the traffic, the construction, and how much of the city is built around technology.</p>
+      <p>I went to Stonehill International School. The student body was about half international and half Indian, so I spent those five years around people from all over the world.</p>
+      <p>My first real exposure to business came from the back seat of a car. My dad works in finance, the drive to soccer practice was long, and he spent most of it on calls. I listened, then spent the rest of the drive asking him questions about what I'd heard. That was my spark.</p>
+
+      <figure class="portrait">
+        <img src="holi.jpg" alt="A young boy covered head to toe in Holi powder, standing on a colour-stained street in Bengaluru." width="1200" height="1600" loading="lazy">
+        <figcaption>Holi, Bengaluru.</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="block">
+      <p class="kicker">Since</p>
+      <h2>Back to Illinois, then New York</h2>
+      <p>I moved back to Vernon Hills and started looking for a way into the business world I'd been hearing about. That turned into the Junior Economic Club and a philanthropic youth board, both on the Experience tab.</p>
+      <p class="last">I'm now a sophomore at Stern studying finance alongside AI, computing and data science. Part of why I picked NYU is that it kept me in the kind of diverse environment I grew up in.</p>
+    </div>
+
+  </div>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <div class="panel" role="tabpanel" id="panel-experience" aria-labelledby="tab-experience" tabindex="0" hidden>
+
+    <div class="block">
+      <p class="kicker">Professional</p>
+      <h2>Where I've worked</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">Zol Capital &middot; Miami, FL</span>
+          <span class="entry-when">Apr &ndash; Aug 2026</span>
+        </div>
+        <span class="entry-role">Private Equity Analyst</span>
+        <p>I ran due diligence on a live acquisition target, building four financial reports to reconcile the company's records against its financials. I built LBO and return models and the financing package behind a prospective buyout, and prepared materials that went to the target itself, which put me across sponsorships, daily operations and strategy.</p>
+        <p class="last"><strong>What stuck:</strong> Attention to detail.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">Julian Grace Foundation &middot; Highland Park, IL</span>
+          <span class="entry-when">Aug 2023 &ndash; Jul 2025</span>
+        </div>
+        <span class="entry-role">High School Youth Board &middot; Alumni Representative</span>
+        <p>Twelve Chicago-area students with grantmaking authority. Over two years we awarded more than $100,000 to ten Chicago non-profits, reading applications, debating them and making recommendations that moved actual money.</p>
+        <p>I lobbied to direct more than $10,000 to <strong>Chicago Freedom School</strong>, which runs leadership development for young people in Chicago. Our board also funded <strong>Latinos Progresando</strong>, which provides immigration legal services to families across the city.</p>
+        <p class="last"><strong>What stuck:</strong> It was the first time I had to defend a recommendation to people who could say no. It was a lot like a pitch.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">Junior Economic Club of Chicago</span>
+          <span class="entry-when">Jul 2023 &ndash; Jul 2025</span>
+        </div>
+        <span class="entry-role">Member &middot; Junior Economist</span>
+        <p>A student-led organization of more than a hundred high schoolers. I researched, wrote and edited articles on global market, deal and economic news, and sat in general meetings with people from top banks and consulting firms.</p>
+        <p class="last"><strong>What stuck:</strong> Getting to put what I was learning through writing into action by talking about it with people from banks.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ AT STERN ============ -->
+  <div class="panel" role="tabpanel" id="panel-stern" aria-labelledby="tab-stern" tabindex="0" hidden>
+
+    <div class="block">
+      <p class="kicker">Coursework</p>
+      <h2>What I'm studying</h2>
+      <p>B.S. in Business at NYU Stern, concentrating in <strong>Finance</strong> and in <strong>AI, Computing and Data Science</strong>, September 2025 to May 2029. <strong>4.00 GPA</strong> and Dean's List. Coursework in microeconomics, foundations of finance, accounting, and statistics and regression.</p>
+      <p class="last">I'm also a member of SEO Career and a mentee in NYU Net Impact.</p>
+      <ul class="chips">
+        <li>Capital IQ</li>
+        <li>AlphaSense</li>
+        <li>Refinitiv Workspace</li>
+        <li>Excel</li>
+        <li>RStudio</li>
+        <li>QuickBooks</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <p class="kicker">Clubs</p>
+      <h2>Three clubs, three angles</h2>
+      <p>Together they let me look at companies from different angles.</p>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">NYU Finance Society</span>
+          <span class="entry-when">Feb 2026 &ndash; Present</span>
+        </div>
+        <span class="entry-role">Executive Committee &middot; Tech and Media Chair</span>
+        <p class="last">A fourteen-week program on accounting, valuation and M&amp;A, applied to real companies. It's where I pitched a long on Darden and a hypothetical acquisition of BellRing Brands by Mondel&#275;z.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">The Violet Quaker Group</span>
+          <span class="entry-when">Feb 2026 &ndash; Present</span>
+        </div>
+        <span class="entry-role">Analyst &middot; Buy side</span>
+        <p>A long/short equity portfolio with $195,000 in AUM, managed with analysts at the University of Pennsylvania. I completed a nine-week program on value investing, pitch sourcing and thesis generation, and pitched to the Executive Board.</p>
+        <p class="last">Managing real money raises the bar on a pitch.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-org">NYU Capital Markets Club</span>
+          <span class="entry-when">Sep 2025 &ndash; May 2026</span>
+        </div>
+        <span class="entry-role">Research Analyst &middot; Director of Outreach &amp; Corporate Communications</span>
+        <p class="last">A ten-week program on macroeconomics, markets and global finance. I presented a pitch on the copper market, and organized and led four firm visits for members.</p>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- ============ INVESTING ============ -->
+  <div class="panel" role="tabpanel" id="panel-investing" aria-labelledby="tab-investing" tabindex="0" hidden>
+
+    <div class="block">
+      <p class="kicker">The work</p>
+      <h2>What I've pitched</h2>
+      <p>Here's the argument in each.</p>
+
+      <div class="pitch">
+        <span class="pitch-id">Copper<span class="pitch-meta">Oct 2025 &middot; Capital Markets Club</span></span>
+        <span class="pitch-what"><strong>The copper market at $5.01/lb.</strong> A commodity pitch rather than a company one: market structure, the supply side, and the cases that follow from both. The first thing I presented at NYU.</span>
+      </div>
+
+      <div class="pitch">
+        <span class="pitch-id">VVV<span class="pitch-meta">Short &middot; Violet Quaker</span></span>
+        <span class="pitch-what"><strong>Valvoline.</strong> The Breeze Autocare acquisition needs synergies the business hasn't shown it can deliver, and leaves a debt burden either way. Consensus assumes locked-in cost headwinds get offset by productivity gains that haven't shown up.</span>
+      </div>
+
+      <div class="pitch">
+        <span class="pitch-id">DRI<span class="pitch-meta">Long &middot; Finance Society</span></span>
+        <span class="pitch-what"><strong>Darden Restaurants.</strong> A consolidator priced as a secular decliner. Discounted growth, and scale economics that improve as consumer pressure pushes weaker operators out.</span>
+      </div>
+
+      <div class="pitch">
+        <span class="pitch-id">MDLZ / BRBR<span class="pitch-meta">M&amp;A &middot; Finance Society</span></span>
+        <span class="pitch-what"><strong>Mondel&#275;z acquires BellRing Brands.</strong> A hypothetical deal built on where protein and supplements are heading, with a three-statement model and segmented revenue builds underneath it.</span>
+      </div>
+
+      <div class="pitch">
+        <span class="pitch-id">BOOT<span class="pitch-meta">Long &middot; Violet Quaker</span></span>
+        <span class="pitch-what"><strong>Boot Barn.</strong> Tariffs read as a cost problem. For the biggest player in a fragmented market, they speed up consolidation instead.</span>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- ============ OFF THE DESK ============ -->
+  <div class="panel" role="tabpanel" id="panel-beyond" aria-labelledby="tab-beyond" tabindex="0" hidden>
+
+    <div class="block">
+      <p class="kicker">Seventeen years</p>
+      <h2>Soccer</h2>
+      <p>I captained and started at center midfield for Vernon Hills High School and FC United: back-to-back conference and sectional championships, second in a national league two seasons running, and All-Conference and All-Daily Herald honors in both 2023 and 2024. Twenty-four goals and twenty-two assists across my final high school and club seasons.</p>
+      <p class="last">I also refereed for US Soccer and coached privately.</p>
+
+      <figure class="portrait">
+        <img src="soccer.jpg" alt="Daniel Finn in a blue number 8 kit, shielding the ball from a defender under floodlights." width="1400" height="2100" loading="lazy">
+        <figcaption>Number 8, center midfield, Vernon Hills.</figcaption>
+      </figure>
+    </div>
+
+
+    <div class="block">
+      <p class="kicker">Otherwise</p>
+      <h2>The rest of it</h2>
+      <p class="last">Outside of soccer, I love Indiana Hoosiers football and basketball, traveling, hiking, golf, ranking restaurants on Beli, and a lot of country music, mostly Zach Bryan. Taco Bell is one of my favorite restaurants.</p>
+
+      <figure class="portrait">
+        <img src="canyon.jpg" alt="Daniel Finn and his brother on a red rock ledge above the Colorado River in the Grand Canyon." width="1400" height="1867" loading="lazy">
+        <figcaption>My brother and I in the Grand Canyon, a week camping and rafting the river.</figcaption>
+      </figure>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="contact">
+      <a class="link" href="mailto:danielfinn@stern.nyu.edu">danielfinn@stern.nyu.edu</a>
+      <a class="link" href="https://www.linkedin.com/in/daniel-finn-" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+      var key = tab.id.replace('tab-', '');
+      if (history.replaceState) history.replaceState(null, '', '#' + key);
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () {
+        select(tab, false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      tab.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === 'Home') next = tabs[0];
+        if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); select(next, true); }
+      });
+    });
+
+    var hash = (location.hash || '').replace('#', '');
+    if (hash) {
+      var initial = document.getElementById('tab-' + hash);
+      if (initial) select(initial, false);
+    }
+  })();
+</script>
